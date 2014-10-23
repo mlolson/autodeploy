@@ -4,14 +4,13 @@ var gith = require('gith').create( 9001 );
 var execFile = require('child_process').execFile;
 
 gith({
-    repo: 'mlolson/autodeploy'
+    repo: 'mlolson/org.geppetto.frontend'
 }).on( 'push', function( payload ) {
     if( payload.branch === 'master' )
     {
             // Exec a shell script
-            execFile('./hook.sh', function(error, stdout, stderr) {
-                    // Log success in some manner
-                    console.log( 'exec complete' );
-            });
+           execFile('./hook.sh', function(error, stdout, stderr) {
+                    console.log( 'Build deployed' );
+           });
     }
 });
